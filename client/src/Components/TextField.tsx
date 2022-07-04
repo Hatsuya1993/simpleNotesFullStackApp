@@ -1,0 +1,15 @@
+import React from 'react'
+
+const TextField = ({inputProp, onChange}: { onChange: React.ChangeEventHandler<HTMLInputElement>, inputProp: {type: React.HTMLInputTypeAttribute, placeholder: React.HTMLInputTypeAttribute, name:React.HTMLInputTypeAttribute, value:React.HTMLInputTypeAttribute}}) => {
+  return (
+    <div>
+      <div>
+      <span>{inputProp.placeholder} : </span>
+        <input required className='peer border p-2' {...inputProp} onChange={onChange}/>
+        <p className='hidden peer-invalid:block text-red-700 font-light'>{inputProp.name} cannot be empty</p>
+      </div>
+    </div>
+  )
+}
+
+export default TextField
