@@ -22,12 +22,12 @@ const Add = () => {
                     name: note.name,
                     task: note.task
                 })
+                notesData.push(note)
+                setNotesData(notesData)
                 }
                 catch(e){
                     console.log(e)
                 }
-        notesData.push(note)
-        setNotesData(notesData)
         navigate('/')
         }
         else{

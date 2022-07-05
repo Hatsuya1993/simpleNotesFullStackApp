@@ -2,6 +2,7 @@ import axios from 'axios'
 import {NotesInterface} from '../../../server/dataInterface/notesInterface'
 import Button from '../Components/Button'
 import Card from '../Components/Card'
+import Pagination from '../Components/Pagination'
 import {useGlobalContext} from '../context'
 
 const Notes = () => {
@@ -9,9 +10,9 @@ const Notes = () => {
   const {notesData, setNotesData} = useGlobalContext()
 
   const deleteAll = async () => {
-    setNotesData([])
     try {
       await axios.delete('http://localhost:8000/deleteAll')
+      setNotesData([])
     } catch (error) {
       console.log(error);
     }
@@ -31,6 +32,7 @@ const Notes = () => {
             )
           })}
         </div>
+        <Pagination/>
         </div>
 
       )
@@ -54,5 +56,6 @@ const Notes = () => {
     </div>
   )
 }
+
 
 export default Notes
