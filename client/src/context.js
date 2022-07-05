@@ -5,18 +5,23 @@ const AppContext = createContext()
 
 const AppProvider = ({children}) => {
     const [notesData, setNotesData] = useState([])
+    const [notesPage, setNotesPage] = useState(0)
     const [totalNotes, setTotalNotes] = useState(0)
+    const [loading, setLoading] = useState(false)
 
     const limit = 9 
     const page = 1
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true)
             try{
                 const request = await axios.get(`http://localhost:8000/?page=${page}&limit=${limit}`)
                 const requestCount = await axios.get(`http://localhost:8000`)
-                setNotesData(await request.data)
-                setTotalNotes(await requestCount.data.length)
+                setNotesPage(request.data)
+                setNotesData(request.data.data)
+                setTotalNotes(requestCount.data.data.length)
+                setLoading(false)
             }
             catch(e){
                 console.log(e)
@@ -26,7 +31,7 @@ const AppProvider = ({children}) => {
         }, [])
     
         return (<AppContext.Provider value={{
-            notesData, setNotesData, limit, totalNotes
+            notesData, setNotesData, limit, totalNotes, loading, notesPage, setNotesPage, setLoading
             }}>{children}</AppContext.Provider>)
 }
 

@@ -12,7 +12,7 @@ export const home = async (req: Request, res: Response) => {
                 res.json(err)
             }
             else{
-                res.json(result.slice(startIndex, endBox))
+                res.json({data: result.slice(startIndex, endBox), currentPage: page})
             }
         })
     }
@@ -22,7 +22,7 @@ export const home = async (req: Request, res: Response) => {
                 res.json(err)
             }
             else{
-                res.json(result)
+                res.json({data: result, currentPage: 1})
             }
         })
     }
