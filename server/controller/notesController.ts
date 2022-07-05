@@ -31,6 +31,11 @@ export const home = async (req: Request, res: Response) => {
 export const postNewNote = async (req: Request, res: Response) => {
     const note = req.body
     try {
+        let checkNoteExist = await Note.findOne({name: note.name})
+        if(checkNoteExist) return res.status(400).json({
+            statusCode: 400,
+            errorMessage: "Name already exist"
+        })
         const newNote = new Note(note)
         await newNote.save()
         res.json(note) 
