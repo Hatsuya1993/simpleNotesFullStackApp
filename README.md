@@ -1,6 +1,6 @@
 # Note Task App
 
-## Stacks Used
+** Stacks Used
 
-![This is an image](https://i.stack.imgur.com/kyKz5.png | width=100)
+![This is an image](https://i.stack.imgur.com/kyKz5.png =250x250)
 
