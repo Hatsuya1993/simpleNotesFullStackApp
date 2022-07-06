@@ -4,7 +4,7 @@ import { NotesInterface } from '../../../server/dataInterface/notesInterface'
 import { useGlobalContext } from '../context'
 import Button from './Button'
 
-const Card = ({name, task}: NotesInterface) => {
+const Card = ({name, task, typeImportant}: NotesInterface) => {
 
   const {notesData, setNotesData} = useGlobalContext()
 
@@ -25,6 +25,7 @@ const Card = ({name, task}: NotesInterface) => {
     <p className="text-gray-700 text-base">
         {task}
     </p>
+    <p className='bg-gray-200 p-1 my-2 rounded-md'>{typeImportant}</p>
   </div>
   <div>
     <Button onClick={handleDelete}>Delete</Button>

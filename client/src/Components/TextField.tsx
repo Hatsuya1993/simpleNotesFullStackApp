@@ -6,7 +6,7 @@ const TextField = ({inputProp, onChange}: { onChange: React.ChangeEventHandler<H
       <div>
       <span>{inputProp.placeholder} : </span>
         <input required className='peer border p-2' {...inputProp} onChange={onChange}/>
-        <p className='hidden peer-invalid:block text-red-700 font-light'>{inputProp.name} cannot be empty</p>
+        <p className='invisible peer-invalid:visible text-red-700 font-light'>{inputProp.name} cannot be empty</p>
       </div>
     </div>
   )

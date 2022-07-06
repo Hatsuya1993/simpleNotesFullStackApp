@@ -4,25 +4,33 @@ import TextField from '../Components/TextField'
 import axios from 'axios'
 import { useGlobalContext } from '../context'
 import { useNavigate } from 'react-router-dom'
+import DropDown from '../Components/DropDown'
 
 const Add = () => {
     const navigate = useNavigate()
     const {notesData, setNotesData} = useGlobalContext()
     const [note, setNote] = useState({name: '', task: ''})
     const [inputMissing, setInputMissing] = useState(false)
+    const [dropdownValue, setDropdownValue] = useState('Very Important')
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNote({
             ...note, [e.target.name] : e.target.value
         })
+    }
+    const handleDropDownChange = (e: any) => {
+        setDropdownValue(e.target.value)
     }
     const handleClick = async () => {
         if(note.name !== '' && note.task !== ''){
             try{
                 await axios.post('http://localhost:8000/add', {
                     name: note.name,
-                    task: note.task
+                    task: note.task,
+                    typeImportant: dropdownValue
                 })
-                notesData.push(note)
+                let data = structuredClone(note)
+                data.typeImportant = dropdownValue
+                notesData.push(data)
                 setNotesData(notesData)
                 }
                 catch(e){
@@ -42,9 +50,10 @@ const Add = () => {
             <div className='text-center pb-3'>
             <h1 className={`${inputMissing === true ? "block" : "hidden"} text-red-700`}>All fields are required</h1>
             </div>
-            <div className='space-y-2 text-center'>
+            <div className='space-y-2 text-center md:flex md:items-center md:space-x-3 md:space-y-0'>
                 <TextField onChange={handleChange} inputProp={{type:'text', placeholder:'Name', name:'name', value:note.name}}/>
                 <TextField onChange={handleChange} inputProp={{type:'text', placeholder:'Task', name:'task', value:note.task}}/>
+                <DropDown onChange={handleDropDownChange} inputProps={{data: ['Very Important','Important','Less Important'], typeData: "Importance"}}></DropDown>
             </div>
             <div className='mt-7 text-center'>
             <Button onClick={handleClick}>Submit</Button>

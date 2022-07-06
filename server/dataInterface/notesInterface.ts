@@ -1,4 +1,5 @@
 export interface NotesInterface {
     name: String,
-    task: String
+    task: String,
+    typeImportant: String
 }

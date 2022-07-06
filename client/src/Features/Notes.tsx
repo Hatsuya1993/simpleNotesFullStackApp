@@ -28,7 +28,7 @@ const Notes = () => {
         <div className='space-y-5 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3'>
           {notesData.map((eachNote: NotesInterface, index: number) => {
             return (
-              <Card key={index} name={eachNote.name} task={eachNote.task}/>
+              <Card key={index} typeImportant={eachNote.typeImportant} name={eachNote.name} task={eachNote.task}/>
             )
           })}
         </div>
