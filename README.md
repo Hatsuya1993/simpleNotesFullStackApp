@@ -2,7 +2,7 @@
 
 ** Stacks Used
 
-Front-End: Reactjs & TailWind CSS  Back-End: Expresjs  Database: MongoDB
+Front-End: Reactjs & TailWind CSS <br/> Back-End: Expresjs <br/> Database: MongoDB
 
 
 
