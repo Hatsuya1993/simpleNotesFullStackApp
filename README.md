@@ -2,5 +2,5 @@
 
 ** Stacks Used
 
-![This is an image](https://i.stack.imgur.com/kyKz5.png)
+![This is an image](https://flyclipart.com/thumb2/react-logo-import-io-221727.png)
 
