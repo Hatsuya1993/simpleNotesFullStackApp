@@ -68,3 +68,31 @@ export const deleteAllNote = async (req: Request, res: Response) => {
         console.log(error)
     }
 }
+
+export const filterData = async (req: Request, res: Response) => {
+    const filterNewData = req.params.filterData
+    if(req.query.page && req.query.limit){
+        const page: number = parseInt(req.query.page.toString())
+        const limit: number = parseInt(req.query.limit.toString())
+        const startIndex = (page - 1) * limit
+        const endBox = page * limit
+        Note.find({typeImportant: filterNewData}, (err: any, result: any) => {
+            if(err){
+                res.json(err)
+            }
+            else{
+                res.json({data: result.slice(startIndex, endBox), currentPage: page})
+            }
+        })
+    }
+    else{
+        Note.find({typeImportant: filterNewData}, (err: any, result: any) => {
+            if(err){
+                res.json(err)
+            }
+            else{
+                res.json({data: result, currentPage: 1})
+            }
+        })
+    }
+}

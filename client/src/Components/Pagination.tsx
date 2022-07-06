@@ -5,7 +5,7 @@ import Button from './Button'
 
 const Pagination = () => {
 
-    const {setNotesData, limit, totalNotes, notesData, loading, setLoading, notesPage, setNotesPage} = useGlobalContext()
+    const {setNotesData, limit, totalNotes, notesData, loading} = useGlobalContext()
 
     useEffect( () => {
         setNotesData(notesData)  

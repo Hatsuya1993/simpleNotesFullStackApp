@@ -31,7 +31,7 @@ const AppProvider = ({children}) => {
         }, [])
     
         return (<AppContext.Provider value={{
-            notesData, setNotesData, limit, totalNotes, loading, notesPage, setNotesPage, setLoading
+            notesData, setNotesData, limit, totalNotes, page, loading, notesPage, setNotesPage, setLoading
             }}>{children}</AppContext.Provider>)
 }
 
