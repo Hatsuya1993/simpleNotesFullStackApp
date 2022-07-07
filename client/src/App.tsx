@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Notes/>}></Route>
           <Route path='/add' element={<Add/>}></Route>
+          <Route path='/:filterData/:note' element={<Add/>}></Route>
         </Routes>
       </div>
     </div>

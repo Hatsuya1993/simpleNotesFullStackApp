@@ -96,3 +96,15 @@ export const filterData = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const editNote = (req: Request, res: Response) => {
+    const note = req.body
+    Note.findOneAndUpdate({name: note.current}, {name: note.name, task: note.task, typeImportant: note.typeImportant}, (err: any, result: any) => {
+        if(err){
+            res.json(err)
+        }
+        else{
+            res.json({data: result})
+        }
+    })
+}

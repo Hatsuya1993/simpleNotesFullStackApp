@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../Components/Button'
 import TextField from '../Components/TextField'
 import axios from 'axios'
 import { useGlobalContext } from '../context'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import DropDown from '../Components/DropDown'
+import { CurrentNotesInterface } from '../../../server/dataInterface/notesInterface'
 
 const Add = () => {
     const navigate = useNavigate()
+    const location = useLocation()
+    const state = location.state as CurrentNotesInterface
     const {notesData, setNotesData} = useGlobalContext()
     const [note, setNote] = useState({name: '', task: ''})
     const [inputMissing, setInputMissing] = useState(false)
-    const [dropdownValue, setDropdownValue] = useState('Very Important')
+    const [dropdownValue, setDropdownValue] = useState('Very Important')    
+
+    useEffect(() => {
+        if(state){            
+            setNote({name: state.name, task: state.task})
+            setDropdownValue(state.typeImportant)
+        }
+    }, [])
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNote({
             ...note, [e.target.name] : e.target.value
@@ -22,20 +33,37 @@ const Add = () => {
     }
     const handleClick = async () => {
         if(note.name !== '' && note.task !== ''){
-            try{
-                await axios.post('http://localhost:8000/add', {
-                    name: note.name,
-                    task: note.task,
-                    typeImportant: dropdownValue
-                })
-                let data = structuredClone(note)
-                data.typeImportant = dropdownValue
-                notesData.push(data)
-                setNotesData(notesData)
+            if(state){
+                try {
+                    await axios.put('http://localhost:8000/edit', {
+                        current: state.name,
+                        name: note.name,
+                        task: note.task,
+                        typeImportant: dropdownValue
+                    })
+                    notesData[0].name = note.name
+                    notesData[0].task = note.task
+                    notesData[0].typeImportant = dropdownValue
+                } catch (e) {
+                    console.log(e);
                 }
-                catch(e){
-                    console.log(e)
-                }
+            }
+            else{
+                try{
+                    await axios.post('http://localhost:8000/add', {
+                        name: note.name,
+                        task: note.task,
+                        typeImportant: dropdownValue
+                    })
+                    let data = structuredClone(note)
+                    data.typeImportant = dropdownValue
+                    notesData.push(data)
+                    setNotesData(notesData)
+                    }
+                    catch(e){
+                        console.log(e)
+                    }
+            }
         navigate('/')
         }
         else{
@@ -56,7 +84,7 @@ const Add = () => {
                 <DropDown onChange={handleDropDownChange} inputProps={{data: ['Very Important','Important','Less Important'], typeData: "Importance"}}></DropDown>
             </div>
             <div className='mt-7 text-center'>
-            <Button onClick={handleClick}>Submit</Button>
+            <Button onClick={handleClick}>{state ? "Edit Note" : "Submit"}</Button>
             </div>
         </div>
     )
