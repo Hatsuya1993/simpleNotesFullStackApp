@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect } from 'react'
-import { useGlobalContext } from '../context'
+import { useGlobalContext } from '../Context/context'
 import Button from './Button'
 
 const Pagination = () => {

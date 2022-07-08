@@ -4,7 +4,7 @@ import Button from '../Components/Button'
 import Card from '../Components/Card'
 import DropDown from '../Components/DropDown'
 import Pagination from '../Components/Pagination'
-import {useGlobalContext} from '../context'
+import {useGlobalContext} from '../Context/context'
 
 const Notes = () => {
 
