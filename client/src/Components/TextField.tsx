@@ -1,6 +1,11 @@
 import React from 'react'
 
-const TextField = ({inputProp, onChange}: { onChange: React.ChangeEventHandler<HTMLInputElement>, inputProp: {type: React.HTMLInputTypeAttribute, placeholder: React.HTMLInputTypeAttribute, name:React.HTMLInputTypeAttribute, value:React.HTMLInputTypeAttribute}}) => {
+type AppProps = {
+  inputProp: {type: React.HTMLInputTypeAttribute, placeholder: React.HTMLInputTypeAttribute, name:React.HTMLInputTypeAttribute, value:React.HTMLInputTypeAttribute},
+  onChange: React.ChangeEventHandler<HTMLInputElement>
+}
+
+const TextField : React.FC<AppProps> = ({inputProp, onChange}) => {
   return (
     <div>
       <div>

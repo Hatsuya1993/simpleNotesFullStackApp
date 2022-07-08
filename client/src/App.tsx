@@ -6,7 +6,7 @@ import Add from './Features/Add';
 import Login from './Features/Login';
 import RequireAuth from './Components/RequireAuth';
 
-function App() {
+const App : React.FC = () => {
   return (
     <div>
       <div>

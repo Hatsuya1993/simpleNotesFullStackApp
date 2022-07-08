@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import DropDown from '../Components/DropDown'
 import { CurrentNotesInterface } from '../../../server/dataInterface/notesInterface'
 
-const Add = () => {
+const Add : React.FC = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const state = location.state as CurrentNotesInterface

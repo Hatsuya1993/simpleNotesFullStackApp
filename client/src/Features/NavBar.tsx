@@ -1,8 +1,8 @@
-import { getAuth } from 'firebase/auth';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../Context/authContext'
 
-const NavBar = () => {
+const NavBar : React.FC = () => {
     const {currentUser, logout} = useAuth()
     const navigate = useNavigate()
     const handleLogout = async () => {

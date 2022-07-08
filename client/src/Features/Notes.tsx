@@ -1,4 +1,5 @@
 import axios from 'axios'
+import React from 'react'
 import {NotesInterface} from '../../../server/dataInterface/notesInterface'
 import Button from '../Components/Button'
 import Card from '../Components/Card'
@@ -6,7 +7,7 @@ import DropDown from '../Components/DropDown'
 import Pagination from '../Components/Pagination'
 import {useGlobalContext} from '../Context/context'
 
-const Notes = () => {
+const Notes : React.FC = () => {
 
   const {notesData, setNotesData, limit, page, loading, setLoading} = useGlobalContext()
 

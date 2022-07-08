@@ -4,7 +4,7 @@ import Button from '../Components/Button'
 import TextField from '../Components/TextField'
 import { useAuth } from '../Context/authContext'
 
-const Login = () => {
+const Login : React.FC = () => {
     const navigate = useNavigate()
     const [loginFail, setLoginFail] = useState('')
     const {login} = useAuth()

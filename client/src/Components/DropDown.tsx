@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const DropDown = ({inputProps, onChange}: {inputProps: {data: string[], typeData: string}, onChange: React.ChangeEventHandler<HTMLSelectElement>}) => {
+type AppProps = {
+    inputProps: {data: string[], typeData: string},
+    onChange: React.ChangeEventHandler<HTMLSelectElement>
+}
+
+const DropDown : React.FC<AppProps> = ({inputProps, onChange}) => {
     return (
         <div>
             <span>{inputProps.typeData} : </span>

@@ -3,7 +3,11 @@ import { useEffect } from 'react'
 import { useGlobalContext } from '../Context/context'
 import Button from './Button'
 
-const Pagination = () => {
+type AppProps = {
+
+}
+
+const Pagination : React.FC<AppProps> = () => {
 
     const {setNotesData, limit, totalNotes, notesData, loading} = useGlobalContext()
 

@@ -1,10 +1,11 @@
 import axios from 'axios'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { NotesInterface } from '../../../server/dataInterface/notesInterface'
 import { useGlobalContext } from '../Context/context'
 import Button from './Button'
 
-const Card = ({name, task, typeImportant}: NotesInterface) => {
+const Card : React.FC<NotesInterface> = ({name, task, typeImportant}) => {
 
   const {notesData, setNotesData} = useGlobalContext()
 
