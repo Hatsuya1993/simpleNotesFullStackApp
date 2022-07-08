@@ -6,8 +6,8 @@ import { useAuth } from '../Context/authContext'
 
 const Login : React.FC = () => {
     const navigate = useNavigate()
-    const [loginFail, setLoginFail] = useState('')
-    const {login} = useAuth()
+    const [authFail, setAuthFail] = useState('')
+    const {login, signup} = useAuth()
     const [user, setUser] = useState({email: '', password: ''})
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser({
@@ -19,17 +19,28 @@ const Login : React.FC = () => {
             await login(user.email, user.password)
             navigate('/')
         } catch (error) {
-            setLoginFail("Email and Password is incorrect")
+            setAuthFail("Email and Password is incorrect")
+            console.log(error)
+        }
+    }
+
+    const handleRegister = async () => {
+        try {
+            await signup(user.email, user.password)
+            navigate('/')
+        } catch (error) {
+            setAuthFail("Error during registration")
             console.log(error)
         }
     }
     return (
         <div>
-            {loginFail ? <h1 className='text-white bg-red-600 w-60 p-2 rounded-md mx-auto mb-4'>{loginFail}</h1> : ""}
+            {authFail ? <h1 className='text-white bg-red-600 w-60 p-2 rounded-md mx-auto mb-4'>{authFail}</h1> : ""}
             <div className='text-center md:flex md:space-x-4'>
             <TextField inputProp={{type:'email', placeholder:'Email', name:'email', value:user.email}} onChange={handleChange}/>
             <TextField inputProp={{type:'password', placeholder:'Password', name:'password', value:user.password}} onChange={handleChange}/>
             <Button onClick={handleLogin}>Login</Button>
+            <Button onClick={handleRegister}>Register</Button>
             </div>
         </div>
     )

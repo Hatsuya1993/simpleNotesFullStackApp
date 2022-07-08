@@ -1,5 +1,5 @@
     import React, { useContext, useState, useEffect } from "react"
-    import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+    import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from "firebase/auth";
     import { auth } from '../Firebase/firebase'
 
     const AuthContext = React.createContext()
@@ -8,8 +8,8 @@
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
-    function signup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password)
+    const signup = async (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const login = async (email, password) => {

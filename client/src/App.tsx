@@ -16,7 +16,7 @@ const App : React.FC = () => {
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/' element={<RequireAuth><Notes/></RequireAuth>}></Route>
           <Route path='/add' element={<RequireAuth><Add/></RequireAuth>}></Route>
-          <Route path='/:filterData/:note' element={<Add/>}></Route>
+          <Route path='/:filterData/:note' element={<RequireAuth><Add/></RequireAuth>}></Route>
         </Routes>
       </div>
       </div>
