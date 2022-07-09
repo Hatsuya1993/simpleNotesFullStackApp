@@ -6,10 +6,12 @@ import { useGlobalContext } from '../Context/context'
 import { useLocation, useNavigate } from 'react-router-dom'
 import DropDown from '../Components/DropDown'
 import { CurrentNotesInterface } from '../../../server/dataInterface/notesInterface'
+import { useAuth } from '../Context/authContext'
 
 const Add : React.FC = () => {
     const navigate = useNavigate()
     const location = useLocation()
+    const {currentUser} = useAuth()
     const state = location.state as CurrentNotesInterface
     const {notesData, setNotesData} = useGlobalContext()
     const [note, setNote] = useState({name: '', task: ''})
@@ -64,7 +66,7 @@ const Add : React.FC = () => {
                         console.log(e)
                     }
             }
-        navigate('/')
+        navigate(`/user/${currentUser.uid}`)
         }
         else{
             setInputMissing(true)

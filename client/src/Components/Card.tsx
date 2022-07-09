@@ -2,10 +2,13 @@ import axios from 'axios'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { NotesInterface } from '../../../server/dataInterface/notesInterface'
+import { useAuth } from '../Context/authContext'
 import { useGlobalContext } from '../Context/context'
 import Button from './Button'
 
 const Card : React.FC<NotesInterface> = ({name, task, typeImportant}) => {
+
+  const {currentUser} = useAuth()
 
   const {notesData, setNotesData} = useGlobalContext()
 
@@ -23,7 +26,7 @@ const Card : React.FC<NotesInterface> = ({name, task, typeImportant}) => {
 
   const handleEditNote = async () => {
     try {
-      navigate(`/${typeImportant}/${name}`, {state: {name, task, typeImportant}})
+      navigate(`/${currentUser.uid}/${typeImportant}/${name}`, {state: {name, task, typeImportant}})
     } catch (error) {
       console.log(error)
     }

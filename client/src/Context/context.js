@@ -16,8 +16,8 @@ const AppProvider = ({children}) => {
         const fetchData = async () => {
             setLoading(true)
             try{
-                const request = await axios.get(`http://localhost:8000/?page=${page}&limit=${limit}`)
-                const requestCount = await axios.get(`http://localhost:8000`)
+                const request = await axios.get(`http://localhost:8000/user/:uid?page=${page}&limit=${limit}`)
+                const requestCount = await axios.get(`http://localhost:8000/user/:uid`)
                 setNotesPage(request.data)
                 setNotesData(request.data.data)
                 setTotalNotes(requestCount.data.data.length)

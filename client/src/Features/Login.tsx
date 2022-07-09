@@ -22,8 +22,8 @@ const Login : React.FC = () => {
     }
     const handleLogin = async () => {
         try {
-            await login(user.email, user.password)
-            navigate('/')
+            const loginData = await login(user.email, user.password)
+            navigate(`/user/${loginData.user.uid}`)
         } catch (error) {
             setAuthFail("Email and Password is incorrect")
             console.log(error)
@@ -32,8 +32,8 @@ const Login : React.FC = () => {
 
     const handleRegister = async () => {
         try {
-            await signup(user.email, user.password)
-            navigate('/')
+            const registerData = await signup(user.email, user.password)
+            navigate(`/user/${registerData.user.uid}`)
         } catch (error) {
             setAuthFail("Error during registration")
             console.log(error)
@@ -44,7 +44,7 @@ const Login : React.FC = () => {
         if(user.password !== ''){
             try {
                 await updatePasswordDetails(user.password)
-                navigate('/')
+                navigate(`/user/${currentUser.uid}`)
             } catch (error) {
                 setAuthFail("Password doesn't meet the requirement")
                 console.log(error)

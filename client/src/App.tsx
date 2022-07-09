@@ -14,10 +14,10 @@ const App : React.FC = () => {
       <div className='p-10'>
         <Routes>
           <Route path='/login' element={<Login/>}></Route>
-          <Route path='/' element={<RequireAuth><Notes/></RequireAuth>}></Route>
-          <Route path='/manage' element={<RequireAuth><Login/></RequireAuth>}></Route>
-          <Route path='/add' element={<RequireAuth><Add/></RequireAuth>}></Route>
-          <Route path='/:filterData/:note' element={<RequireAuth><Add/></RequireAuth>}></Route>
+          <Route path='/user/:uid' element={<RequireAuth><Notes/></RequireAuth>}></Route>
+          <Route path='/user/:uid/manage' element={<RequireAuth><Login/></RequireAuth>}></Route>
+          <Route path='/user/:uid/add' element={<RequireAuth><Add/></RequireAuth>}></Route>
+          <Route path='/:uid/:filterData/:note' element={<RequireAuth><Add/></RequireAuth>}></Route>
         </Routes>
       </div>
       </div>
