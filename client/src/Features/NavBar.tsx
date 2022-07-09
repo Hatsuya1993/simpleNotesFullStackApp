@@ -33,6 +33,7 @@ const NavBar : React.FC = () => {
                     <li>
                         {currentUser ? <Link to="#" onClick={handleLogout}>Log Out</Link> : <Link to='/login'>Login</Link>}
                     </li>
+                    {currentUser ? <li><Link to='/manage'>Manage</Link></li> : ""}
                 </ul>
             </div>
         </div>

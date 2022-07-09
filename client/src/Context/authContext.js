@@ -1,5 +1,5 @@
     import React, { useContext, useState, useEffect } from "react"
-    import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from "firebase/auth";
+    import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, updatePassword, reauthenticateWithCredential } from "firebase/auth";
     import { auth } from '../Firebase/firebase'
 
     const AuthContext = React.createContext()
@@ -16,6 +16,10 @@
         await signInWithEmailAndPassword(auth, email, password)
     }
 
+    // const reauthenticate = async () => {
+    //     await reauthenticateWithCredential(auth.currentUser, )
+    // }
+
     const logout = async () => {
         await signOut(auth)
     }
@@ -28,8 +32,8 @@
         return currentUser.updateEmail(email)
     }
 
-    function updatePassword(password) {
-        return currentUser.updatePassword(password)
+    const updatePasswordDetails = async (password) => {
+        await updatePassword(auth.currentUser, password)
     }
 
     useEffect(() => {
@@ -48,7 +52,7 @@
         logout,
         resetPassword,
         updateEmail,
-        updatePassword
+        updatePasswordDetails
     }
 
     return (
