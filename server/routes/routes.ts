@@ -3,7 +3,7 @@ import { home, postNewNote, deleteNote, deleteAllNote, filterData, editNote } fr
 
 export const noteRoutes = express.Router()
 
-noteRoutes.route("/").get(home)
+noteRoutes.route("/user/:uid").get(home)
 
 noteRoutes.route('/add').post(postNewNote)
 

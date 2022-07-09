@@ -16,24 +16,24 @@ const NavBar : React.FC = () => {
     return (
         <div className='bg-blue-400 text-center p-3 md:flex md:justify-between md:items-center'>
             <div className='text-white text-2xl'>
-                <Link to='/'><h1>Note Taking App</h1></Link>
+                <Link to={currentUser ? `/user/${currentUser.uid}` : '/login'}><h1>Note Taking App</h1></Link>
             </div>
             <div className='text-white text-2xl text-center'>
                 <ul className='space-x-5 md:flex'>
                     <li>
-                        <Link to='/'>
+                        <Link to={currentUser ? `/user/${currentUser.uid}` : '/login'}>
                         Notes
                         </Link>
                     </li>
                     <li>
-                        <Link to='/add'>
+                        <Link to={currentUser ? `/user/${currentUser.uid}/add` : '/login'}>
                         Add Notes
                         </Link>
                     </li>
                     <li>
                         {currentUser ? <Link to="#" onClick={handleLogout}>Log Out</Link> : <Link to='/login'>Login</Link>}
                     </li>
-                    {currentUser ? <li><Link to='/manage'>Manage</Link></li> : ""}
+                    {currentUser ? <li><Link to={`/user/${currentUser.uid}/manage`}>Manage</Link></li> : ""}
                 </ul>
             </div>
         </div>

@@ -9,11 +9,11 @@
     const [loading, setLoading] = useState(true)
 
     const signup = async (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
+        return await createUserWithEmailAndPassword(auth, email, password)
     }
 
     const login = async (email, password) => {
-        await signInWithEmailAndPassword(auth, email, password)
+        return await signInWithEmailAndPassword(auth, email, password)
     }
 
     // const reauthenticate = async () => {
@@ -52,7 +52,8 @@
         logout,
         resetPassword,
         updateEmail,
-        updatePasswordDetails
+        updatePasswordDetails,
+        setCurrentUser
     }
 
     return (
