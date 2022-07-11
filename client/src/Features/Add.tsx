@@ -30,7 +30,7 @@ const Add : React.FC = () => {
             ...note, [e.target.name] : e.target.value
         })
     }
-    const handleDropDownChange = (e: any) => {
+    const handleDropDownChange = (e: any) => {        
         setDropdownValue(e.target.value)
     }
     const handleClick = async () => {
@@ -45,7 +45,7 @@ const Add : React.FC = () => {
                     })
                     notesData[0].name = note.name
                     notesData[0].task = note.task
-                    notesData[0].typeImportant = dropdownValue
+                    notesData[0].typeImportant = dropdownValue                    
                 } catch (e) {
                     console.log(e);
                 }
@@ -83,7 +83,7 @@ const Add : React.FC = () => {
             <div className='space-y-2 text-center md:flex md:items-center md:space-x-3 md:space-y-0'>
                 <TextField onChange={handleChange} inputProp={{type:'text', placeholder:'Name', name:'name', value:note.name}}/>
                 <TextField onChange={handleChange} inputProp={{type:'text', placeholder:'Task', name:'task', value:note.task}}/>
-                <DropDown onChange={handleDropDownChange} inputProps={{data: ['Very Important','Important','Less Important'], typeData: "Importance"}}></DropDown>
+                <DropDown onChange={handleDropDownChange} inputProps={{data: ['Select An Option','Very Important','Important','Less Important'], typeData: "Importance"}}></DropDown>
             </div>
             <div className='mt-7 text-center'>
             <Button onClick={handleClick}>{state ? "Edit Note" : "Submit"}</Button>

@@ -13,6 +13,7 @@ const App : React.FC = () => {
       <NavBar />
       <div className='p-10'>
         <Routes>
+        <Route path='/' element={<Login/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/user/:uid' element={<RequireAuth><Notes/></RequireAuth>}></Route>
           <Route path='/user/:uid/manage' element={<RequireAuth><Login/></RequireAuth>}></Route>
