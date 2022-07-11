@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { NotesInterface } from '../../../server/dataInterface/notesInterface'
 import Button from '../Components/Button'
 import TextField from '../Components/TextField'
 import { useAuth } from '../Context/authContext'
+import { useGlobalContext } from '../Context/context'
 
 const Login : React.FC = () => {
     const {currentUser, updatePasswordDetails} = useAuth()
+    const {notesData, setNotesData, setLoading} = useGlobalContext()
     const navigate = useNavigate()
     const [authFail, setAuthFail] = useState('')
     const {login, signup} = useAuth()

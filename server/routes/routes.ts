@@ -5,12 +5,12 @@ export const noteRoutes = express.Router()
 
 noteRoutes.route("/user/:uid").get(home)
 
-noteRoutes.route('/add').post(postNewNote)
+noteRoutes.route('/user/:uid/add').post(postNewNote)
 
 noteRoutes.route('/delete/:name').delete(deleteNote)
 
 noteRoutes.route('/deleteAll').delete(deleteAllNote)
 
-noteRoutes.route("/:filterData").get(filterData)
+noteRoutes.route("/user/:uid/:filterData").get(filterData)
 
 noteRoutes.route("/edit").put(editNote)

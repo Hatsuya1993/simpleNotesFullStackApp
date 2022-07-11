@@ -31,11 +31,6 @@ export const home = async (req: Request, res: Response) => {
 export const postNewNote = async (req: Request, res: Response) => {
     const note = req.body
     try {
-        let checkNoteExist = await Note.findOne({name: note.name})
-        if(checkNoteExist) return res.status(400).json({
-            statusCode: 400,
-            errorMessage: "Name already exist"
-        })
         const newNote = new Note(note)
         await newNote.save()
         res.json(note) 
@@ -71,12 +66,13 @@ export const deleteAllNote = async (req: Request, res: Response) => {
 
 export const filterData = async (req: Request, res: Response) => {
     const filterNewData = req.params.filterData
+    const uid = req.params.uid
     if(req.query.page && req.query.limit){
         const page: number = parseInt(req.query.page.toString())
         const limit: number = parseInt(req.query.limit.toString())
         const startIndex = (page - 1) * limit
         const endBox = page * limit
-        Note.find({typeImportant: filterNewData}, (err: any, result: any) => {
+        Note.find({typeImportant: filterNewData, user: uid}, (err: any, result: any) => {
             if(err){
                 res.json(err)
             }
@@ -86,7 +82,7 @@ export const filterData = async (req: Request, res: Response) => {
         })
     }
     else{
-        Note.find({typeImportant: filterNewData}, (err: any, result: any) => {
+        Note.find({typeImportant: filterNewData, user: uid}, (err: any, result: any) => {
             if(err){
                 res.json(err)
             }

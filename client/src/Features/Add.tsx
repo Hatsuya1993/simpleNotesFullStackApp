@@ -41,7 +41,7 @@ const Add : React.FC = () => {
                         current: state.name,
                         name: note.name,
                         task: note.task,
-                        typeImportant: dropdownValue
+                        typeImportant: dropdownValue,
                     })
                     notesData[0].name = note.name
                     notesData[0].task = note.task
@@ -52,10 +52,11 @@ const Add : React.FC = () => {
             }
             else{
                 try{
-                    await axios.post('http://localhost:8000/add', {
+                    await axios.post(`http://localhost:8000/user/${currentUser.uid}/add`, {
                         name: note.name,
                         task: note.task,
-                        typeImportant: dropdownValue
+                        typeImportant: dropdownValue,
+                        user: currentUser.uid
                     })
                     let data = structuredClone(note)
                     data.typeImportant = dropdownValue
