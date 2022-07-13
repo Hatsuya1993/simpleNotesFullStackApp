@@ -53,8 +53,9 @@ export const deleteNote = async (req: Request, res: Response) => {
 }
 
 export const deleteAllNote = async (req: Request, res: Response) => {
+    const uid = req.params.uid
     try {
-        const removeAllNote = await Note.deleteMany({})
+        const removeAllNote = await Note.deleteMany({user: uid})
         res.json({
             "Response": `${removeAllNote} deleted`,
             "Status Code": `${res.statusCode}`

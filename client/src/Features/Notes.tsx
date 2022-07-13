@@ -27,7 +27,7 @@ const Notes : React.FC = () => {
 
   const deleteAll = async () => {
     try {
-      await axios.delete('http://localhost:8000/deleteAll')
+      await axios.delete(`http://localhost:8000/deleteAll/${currentUser.uid}`)
       setNotesData([])
     } catch (error) {
       console.log(error);

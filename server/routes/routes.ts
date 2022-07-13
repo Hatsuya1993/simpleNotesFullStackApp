@@ -9,7 +9,7 @@ noteRoutes.route('/user/:uid/add').post(postNewNote)
 
 noteRoutes.route('/delete/:name').delete(deleteNote)
 
-noteRoutes.route('/deleteAll').delete(deleteAllNote)
+noteRoutes.route('/deleteAll/:uid').delete(deleteAllNote)
 
 noteRoutes.route("/user/:uid/:filterData").get(filterData)
 
