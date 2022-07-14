@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import DropDown from '../Components/DropDown'
 import { CurrentNotesInterface } from '../../../server/dataInterface/notesInterface'
 import { useAuth } from '../Context/authContext'
+import { COMPONENTS } from '../Constants/constants'
 
 const Add : React.FC = () => {
     const navigate = useNavigate()
@@ -16,7 +17,7 @@ const Add : React.FC = () => {
     const {notesData, setNotesData} = useGlobalContext()
     const [note, setNote] = useState({name: '', task: ''})
     const [inputMissing, setInputMissing] = useState(false)
-    const [dropdownValue, setDropdownValue] = useState('Very Important')    
+    const [dropdownValue, setDropdownValue] = useState('very important')    
 
     useEffect(() => {
         if(state){            
@@ -84,10 +85,10 @@ const Add : React.FC = () => {
             <div className='space-y-2 text-center md:flex md:items-center md:space-x-3 md:space-y-0'>
                 <TextField error={true} onChange={handleChange} inputProp={{type:'text', placeholder:'Name', name:'name', value:note.name}}/>
                 <TextField error={true} onChange={handleChange} inputProp={{type:'text', placeholder:'Task', name:'task', value:note.task}}/>
-                <DropDown onChange={handleDropDownChange} inputProps={{data: ['Select An Option','Very Important','Important','Less Important'], typeData: "Importance"}}></DropDown>
+                <DropDown onChange={handleDropDownChange} inputProps={{data: [COMPONENTS.SELECT_AN_OPTION, COMPONENTS.VERY_IMPORTANT.toLowerCase(), COMPONENTS.IMPORTANT.toLowerCase(), COMPONENTS.LESS_IMPORTANT.toLowerCase()], typeData: "Importance"}}></DropDown>
             </div>
             <div className='mt-7 text-center'>
-            <Button onClick={handleClick}>{state ? "Edit Note" : "Submit"}</Button>
+            <Button onClick={handleClick}>{state ? COMPONENTS.EDIT_NOTE : COMPONENTS.SUBMIT}</Button>
             </div>
         </div>
     )

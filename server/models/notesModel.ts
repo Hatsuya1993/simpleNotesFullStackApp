@@ -12,9 +12,9 @@ const noteSchema = new Schema<NotesInterface>({
     },
     typeImportant: {
         type: String,
-        enum: ['Very Important','Important','Less Important'],
+        enum: ['very important','important','less important'],
         required: true,
-        default: 'Very Important'
+        default: 'very important'
     },
     user: {
         type: String,

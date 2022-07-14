@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../Components/Button'
 import TextField from '../Components/TextField'
+import { COMPONENTS } from '../Constants/constants'
 import { useAuth } from '../Context/authContext'
 
 const Login : React.FC = () => {
@@ -25,7 +26,7 @@ const Login : React.FC = () => {
             const loginData = await login(user.email, user.password)
             navigate(`/user/${loginData.user.uid}`)
         } catch (error) {
-            setAuthFail("Email and Password is incorrect")
+            setAuthFail(COMPONENTS.EMAIL_AND_PASSWORD_IS_INCORRECT)
             console.log(error)
         }
     }
@@ -35,7 +36,7 @@ const Login : React.FC = () => {
             const registerData = await signup(user.email, user.password)
             navigate(`/user/${registerData.user.uid}`)
         } catch (error) {
-            setAuthFail("Error during registration")
+            setAuthFail(COMPONENTS.ERROR_DURING_REGISTRATION)
             console.log(error)
         }
     }
@@ -46,7 +47,7 @@ const Login : React.FC = () => {
                 await updatePasswordDetails(user.password)
                 navigate(`/user/${currentUser.uid}`)
             } catch (error) {
-                setAuthFail("Password doesn't meet the requirement")
+                setAuthFail(COMPONENTS.PASSWORD_DOESNT_MEET_THE_REQUIREMENT)
                 console.log(error)
             }
         }

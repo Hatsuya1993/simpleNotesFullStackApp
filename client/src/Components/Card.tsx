@@ -5,6 +5,7 @@ import { NotesInterface } from '../../../server/dataInterface/notesInterface'
 import { useAuth } from '../Context/authContext'
 import { useGlobalContext } from '../Context/context'
 import Button from './Button'
+import { COMPONENTS } from '../Constants/constants'
 
 const Card : React.FC<NotesInterface> = ({name, task, typeImportant}) => {
 
@@ -42,8 +43,8 @@ const Card : React.FC<NotesInterface> = ({name, task, typeImportant}) => {
     <p className='bg-gray-200 p-1 my-2 rounded-md'>{typeImportant}</p>
   </div>
   <div className='flex gap-2'>
-    <Button onClick={handleDelete}>Delete</Button>
-    <Button onClick={handleEditNote}>Edit</Button>
+    <Button onClick={handleDelete}>{COMPONENTS.DELETE.toUpperCase()}</Button>
+    <Button onClick={handleEditNote}>{COMPONENTS.EDIT.toUpperCase()}</Button>
   </div>
 </div>
   )

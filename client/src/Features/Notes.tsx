@@ -6,6 +6,7 @@ import Card from '../Components/Card'
 import DropDown from '../Components/DropDown'
 import Pagination from '../Components/Pagination'
 import TextField from '../Components/TextField'
+import { COMPONENTS } from '../Constants/constants'
 import { useAuth } from '../Context/authContext'
 import {useGlobalContext} from '../Context/context'
 
@@ -67,12 +68,12 @@ const Notes : React.FC = () => {
         return (
           <div className='space-y-4 md:space-y-0'>
             <div className='md:flex md:items-center md:space-x-3 space-x-0 space-y-1 md:space-y-0'>
-            <DropDown  onChange={handleDropDownFilter} inputProps={{data: ['Pick an option','Very Important','Important','Less Important'], typeData: "Filter By"}}></DropDown>
+            <DropDown  onChange={handleDropDownFilter} inputProps={{data: [COMPONENTS.SELECT_AN_OPTION, COMPONENTS.VERY_IMPORTANT, COMPONENTS.IMPORTANT, COMPONENTS.LESS_IMPORTANT], typeData: "Filter By"}}></DropDown>
             <TextField onChange={handleOnChangeTitle} error={false} inputProp={{name: "title", placeholder: "Title", type: "text", value: inputTitle}}></TextField>
-            <Button onClick={handleClickFilter}>Filter</Button>
+            <Button onClick={handleClickFilter}>{COMPONENTS.FILTER}</Button>
             </div>
             <div className='text-center md:flex md:items-center md:justify-between'>
-            <Button onClick={deleteAll}>Delete All</Button>
+            <Button onClick={deleteAll}>{COMPONENTS.DELETE_ALL}</Button>
             </div>
           <div className='space-y-5 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3'>
             {notesData.map((eachNote: NotesInterface, index: number) => {
@@ -87,11 +88,11 @@ const Notes : React.FC = () => {
       }
       else{
         return(
-          <div className='text-center space-y-1 md:space-y-0'>
-          <Button onClick={() => {}}>No Data</Button>
+          <div className='text-center space-y-1 md:space-y-1'>
+          <Button onClick={() => {}}>{COMPONENTS.NO_DATA}</Button>
           <TextField onChange={handleOnChangeTitle} error={false} inputProp={{name: "title", placeholder: "Title", type: "text", value: inputTitle}}></TextField>
-          <Button onClick={handleClickFilter}>Filter</Button>
-          <DropDown  onChange={handleDropDownFilter} inputProps={{data: ['','Very Important','Important','Less Important'], typeData: "Filter By"}}></DropDown>
+          <Button onClick={handleClickFilter}>{COMPONENTS.FILTER}</Button>
+          <DropDown  onChange={handleDropDownFilter} inputProps={{data: [COMPONENTS.SELECT_AN_OPTION, COMPONENTS.VERY_IMPORTANT, COMPONENTS.IMPORTANT, COMPONENTS.LESS_IMPORTANT], typeData: "Filter By"}}></DropDown>
         </div>
         )
       }
@@ -99,7 +100,7 @@ const Notes : React.FC = () => {
     else {
       return (
         <div className='text-center'>
-          <Button onClick={() => {}}>Loading...</Button>
+          <Button onClick={() => {}}>{COMPONENTS.LOADING}</Button>
         </div>
       )
     }

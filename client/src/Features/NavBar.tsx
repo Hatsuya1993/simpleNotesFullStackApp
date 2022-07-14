@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'
+import { COMPONENTS } from '../Constants/constants';
 import { useAuth } from '../Context/authContext'
 
 const NavBar : React.FC = () => {
@@ -22,18 +23,18 @@ const NavBar : React.FC = () => {
                 <ul className='space-x-5 md:flex'>
                     <li>
                         <Link to={currentUser ? `/user/${currentUser.uid}` : '/login'}>
-                        Notes
+                        {COMPONENTS.NOTES}
                         </Link>
                     </li>
                     <li>
                         <Link to={currentUser ? `/user/${currentUser.uid}/add` : '/login'}>
-                        Add Notes
+                        {COMPONENTS.ADD_NOTES}
                         </Link>
                     </li>
                     <li>
-                        {currentUser ? <Link to="#" onClick={handleLogout}>Log Out</Link> : <Link to='/login'>Login</Link>}
+                        {currentUser ? <Link to="#" onClick={handleLogout}>{COMPONENTS.LOGOUT}</Link> : <Link to='/login'>{COMPONENTS.LOGIN}</Link>}
                     </li>
-                    {currentUser ? <li><Link to={`/user/${currentUser.uid}/manage`}>Manage</Link></li> : ""}
+                    {currentUser ? <li><Link to={`/user/${currentUser.uid}/manage`}>{COMPONENTS.MANAGE}</Link></li> : ""}
                 </ul>
             </div>
         </div>
