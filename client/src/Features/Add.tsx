@@ -82,8 +82,8 @@ const Add : React.FC = () => {
             <h1 className={`${inputMissing === true ? "block" : "hidden"} text-red-700`}>All fields are required</h1>
             </div>
             <div className='space-y-2 text-center md:flex md:items-center md:space-x-3 md:space-y-0'>
-                <TextField onChange={handleChange} inputProp={{type:'text', placeholder:'Name', name:'name', value:note.name}}/>
-                <TextField onChange={handleChange} inputProp={{type:'text', placeholder:'Task', name:'task', value:note.task}}/>
+                <TextField error={true} onChange={handleChange} inputProp={{type:'text', placeholder:'Name', name:'name', value:note.name}}/>
+                <TextField error={true} onChange={handleChange} inputProp={{type:'text', placeholder:'Task', name:'task', value:note.task}}/>
                 <DropDown onChange={handleDropDownChange} inputProps={{data: ['Select An Option','Very Important','Important','Less Important'], typeData: "Importance"}}></DropDown>
             </div>
             <div className='mt-7 text-center'>

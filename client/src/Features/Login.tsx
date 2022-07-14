@@ -55,8 +55,8 @@ const Login : React.FC = () => {
         <div>
             {authFail ? <h1 className='text-white bg-red-600 w-60 p-2 rounded-md mx-auto mb-4 text-center'>{authFail}</h1> : ""}
             <div className='text-center md:flex md:space-x-4 space-y-1 md:space-y-0'>
-            <TextField inputProp={{type:'email', placeholder:'Email', name:'email', value:user.email}} onChange={handleChange}/>
-            <TextField inputProp={{type:'password', placeholder:'Password', name:'password', value:user.password}} onChange={handleChange}/>
+            <TextField error={true} inputProp={{type:'email', placeholder:'Email', name:'email', value:user.email}} onChange={handleChange}/>
+            <TextField error={true} inputProp={{type:'password', placeholder:'Password', name:'password', value:user.password}} onChange={handleChange}/>
             {currentUser ? (
             <Button onClick={handleManageAccount}>Change Password</Button>
             ) : (
