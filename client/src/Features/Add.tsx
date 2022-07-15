@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Button from '../Components/Button'
 import TextField from '../Components/TextField'
 import axios from 'axios'
@@ -15,11 +15,11 @@ const Add : React.FC = () => {
     const {currentUser} = useAuth()
     const state = location.state as CurrentNotesInterface
     const {notesData, setNotesData} = useGlobalContext()
-    const [note, setNote] = useState({name: '', task: ''})
-    const [inputMissing, setInputMissing] = useState(false)
-    const [dropdownValue, setDropdownValue] = useState('very important')    
+    const [note, setNote] = React.useState({name: '', task: ''})
+    const [inputMissing, setInputMissing] = React.useState(false)
+    const [dropdownValue, setDropdownValue] = React.useState('very important')    
 
-    useEffect(() => {
+    React.useEffect(() => {
         if(state){            
             setNote({name: state.name, task: state.task})
             setDropdownValue(state.typeImportant)

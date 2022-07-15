@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import * as ReactRouterDOM from 'react-router-dom'
 import { NotesInterface } from '../../../server/dataInterface/notesInterface'
 import { useAuth } from '../Context/authContext'
 import { useGlobalContext } from '../Context/context'
@@ -13,7 +13,7 @@ const Card : React.FC<NotesInterface> = ({name, task, typeImportant}) => {
 
   const {notesData, setNotesData} = useGlobalContext()
 
-  const navigate = useNavigate()
+  const navigate = ReactRouterDOM.useNavigate()
 
   const handleDelete = async () => {
     try {

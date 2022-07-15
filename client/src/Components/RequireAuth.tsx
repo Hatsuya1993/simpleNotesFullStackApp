@@ -1,5 +1,5 @@
 import React from "react"
-import { Navigate } from "react-router-dom"
+import * as ReactRouterDOM from "react-router-dom"
 import { useAuth } from "../Context/authContext"
 
 type AppProps = {
@@ -9,7 +9,7 @@ type AppProps = {
 const RequireAuth : React.FC<AppProps> = ({children}) => {
     const {currentUser} = useAuth()
     return (
-        currentUser ? children : <Navigate to={"/login"}/>
+        currentUser ? children : <ReactRouterDOM.Navigate to={"/login"}/>
     )
 }
 

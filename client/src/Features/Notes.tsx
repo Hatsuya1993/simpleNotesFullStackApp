@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {NotesInterface} from '../../../server/dataInterface/notesInterface'
 import Button from '../Components/Button'
 import Card from '../Components/Card'
@@ -14,7 +14,7 @@ const Notes : React.FC = () => {
 
   const {notesData, setNotesData, limit, page, loading, setLoading} = useGlobalContext()
   const {currentUser} = useAuth()
-  const [inputTitle, setInputTitle] = useState<string>("")
+  const [inputTitle, setInputTitle] = React.useState<string>("")
 
   const fetchData = async () => {
     setLoading(true)
@@ -25,7 +25,7 @@ const Notes : React.FC = () => {
     setLoading(false)
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchData();
   }, []);
 

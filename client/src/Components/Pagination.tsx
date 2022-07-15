@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect } from 'react'
+import React from 'react'
 import { useGlobalContext } from '../Context/context'
 import Button from './Button'
 
@@ -11,7 +11,7 @@ const Pagination : React.FC<AppProps> = () => {
 
     const {setNotesData, limit, totalNotes, notesData, loading} = useGlobalContext()
 
-    useEffect( () => {
+    React.useEffect( () => {
         setNotesData(notesData)  
     }, [loading])
 

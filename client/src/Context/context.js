@@ -1,18 +1,18 @@
 import axios from 'axios'
-import React, { useState, useContext, useEffect, createContext } from 'react'
+import React from 'react'
 
-const AppContext = createContext()
+const AppContext = React.createContext()
 
 const AppProvider = ({children}) => {
-    const [notesData, setNotesData] = useState([])
-    const [notesPage, setNotesPage] = useState(0)
-    const [totalNotes, setTotalNotes] = useState(0)
-    const [loading, setLoading] = useState(false)
+    const [notesData, setNotesData] = React.useState([])
+    const [notesPage, setNotesPage] = React.useState(0)
+    const [totalNotes, setTotalNotes] = React.useState(0)
+    const [loading, setLoading] = React.useState(false)
 
     const limit = 9 
     const page = 1
 
-    useEffect(() => {
+    React.useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
             try{
@@ -36,7 +36,7 @@ const AppProvider = ({children}) => {
 }
 
 export const useGlobalContext = () => {
-    return useContext(AppContext)
+    return React.useContext(AppContext)
 }
 
 export {AppContext, AppProvider}

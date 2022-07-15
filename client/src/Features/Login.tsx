@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
+import * as ReactRouterDOM from 'react-router-dom'
 import Button from '../Components/Button'
 import TextField from '../Components/TextField'
 import { COMPONENTS } from '../Constants/constants'
@@ -7,11 +7,11 @@ import { useAuth } from '../Context/authContext'
 
 const Login : React.FC = () => {
     const {currentUser, updatePasswordDetails} = useAuth()
-    const navigate = useNavigate()
-    const [authFail, setAuthFail] = useState('')
+    const navigate = ReactRouterDOM.useNavigate()
+    const [authFail, setAuthFail] = React.useState('')
     const {login, signup} = useAuth()
-    const [user, setUser] = useState({email: '', password: ''})
-    useEffect(() => {
+    const [user, setUser] = React.useState({email: '', password: ''})
+    React.useEffect(() => {
         if(currentUser){
             setUser({email: currentUser.email, password: ''})
         }
